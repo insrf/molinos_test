@@ -1,0 +1,8 @@
+= form_for @category, local: true do |form|
+
+  = render 'layouts/errors', resource: @category
+
+  = form.label :name
+  = form.text_field :name
+
+  = form.submit 'Create'

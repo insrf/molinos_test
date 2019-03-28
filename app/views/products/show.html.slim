@@ -5,3 +5,5 @@ h2= @product.name
 h2= @product.info
 
 = render @product
+
+= link_to 'Back', category_path(@product.category)

@@ -11,7 +11,11 @@ class ProductsController < ApplicationController
 
   def create
     @product = @category.products.new(product_params)
-    @product.save
+    if @product.save
+      redirect_to @product, notice: 'Answer was successfully created'
+    else
+      render :new
+    end
   end
 
   def update

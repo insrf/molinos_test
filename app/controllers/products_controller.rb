@@ -2,6 +2,9 @@ class ProductsController < ApplicationController
   before_action :load_product, only: %w[show edit update destroy]
   before_action :load_category, only: %w[new create]
 
+  def show
+  end
+
   def new
     @product = Product.new
   end
@@ -12,7 +15,7 @@ class ProductsController < ApplicationController
   def create
     @product = @category.products.new(product_params)
     if @product.save
-      redirect_to @product, notice: 'Answer was successfully created'
+      redirect_to @product, notice: 'Product was successfully created'
     else
       render :new
     end

@@ -1,5 +1,5 @@
 h1 All Categories
 
-= render @categories
+= nested_categories @categories.arrange(:order => :created_at)
 
 = link_to "New category", new_category_path(@category)

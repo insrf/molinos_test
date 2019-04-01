@@ -5,4 +5,7 @@
   = form.label :name
   = form.text_field :name
 
+  = form.label :parent_id
+  = form.collection_select :parent_id, Category.all, :id, :name, prompt: true
+
   = form.submit 'Create'

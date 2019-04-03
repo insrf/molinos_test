@@ -4,6 +4,7 @@ class Category < ApplicationRecord
 
   has_many :products
   has_ancestry
+  acts_as_list
 
   validates :name, presence: true
 end

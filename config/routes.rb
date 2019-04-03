@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   root to: "home#index"
 
   resources :categories, shallow: true do
+    collection { post :sort }
     resources :products, shallow: true
   end
 end

@@ -2,7 +2,16 @@ class CategoriesController < ApplicationController
   before_action :find_category , only: %i[show edit update destroy]
 
   def index
-    @categories = Category.all
+    @categories = Category.order("position")
+  end
+
+  def sort
+    respond_to :json
+    params[:category].each_with_index do |id, index|
+      category = Category.friendly.find(id)
+      category.update_attribute(:position, index) if category
+    end
+    render nothing: true
   end
 
   def show

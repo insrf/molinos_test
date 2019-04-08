@@ -6,7 +6,6 @@ class CategoriesController < ApplicationController
   end
 
   def sort
-    respond_to :json
     params[:category].each_with_index do |id, index|
       category = Category.friendly.find(id)
       category.update_attribute(:position, index) if category

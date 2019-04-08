@@ -1,7 +1,9 @@
 module CategoriesHelper
   def nested_categories(categories)
-    categories.map do |category, sub_categories|
-      render(category) + content_tag(:div, nested_categories(sub_categories), :class => "handle")
-    end.join.html_safe
+    content_tag :ul do
+      categories.map do |category, sub_categories|
+        content_tag(:li, (category.name + nested_categories(sub_categories)).html_safe)
+      end.join.html_safe
+    end
   end
 end

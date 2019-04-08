@@ -43,15 +43,11 @@ gem 'file_validators'
 gem 'ancestry'
 gem 'acts_as_list'
 
-# group :assets do
-#   gem 'sass-rails'
-#   gem 'coffee-rails'
-#   gem 'uglifier'
-# end
-
 gem 'jquery-rails'
 gem "jquery-ui-rails"
 gem 'record_tag_helper', '~> 1.0'
+gem "jstree-rails-4"
+gem 'simple_form'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

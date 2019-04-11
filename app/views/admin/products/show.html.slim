@@ -1,0 +1,9 @@
+h1 Show Product
+
+h2= @product.name
+
+h2= @product.info
+
+= render @product
+
+= link_to 'Back', admin_category_path(@product.category)

@@ -4,36 +4,7 @@ class ProductsController < ApplicationController
 
   def show
   end
-
-  def new
-    @product = Product.new
-  end
-
-  def edit
-  end
-
-  def create
-    @product = @category.products.new(product_params)
-    if @product.save
-      redirect_to @product, notice: 'Product was successfully created'
-    else
-      render :new
-    end
-  end
-
-  def update
-    if @product.update(product_params)
-      redirect_to @product.category
-    else
-      render :edit
-    end
-  end
-
-  def destroy
-    @product.destroy
-    redirect_to category_path(@product.category)
-  end
-
+  
   private
 
   def load_product

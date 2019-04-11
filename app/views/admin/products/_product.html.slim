@@ -1,0 +1,7 @@
+ul
+- if product.persisted?
+  li= product.name
+  li= truncate(product.info, length: 150)
+  li= link_to(image_tag(product.image.thumb.url, alt: 'Image'), product.image.url, target: '_blank') if product.image?
+  = link_to 'Edit', admin_edit_product_path(product)
+  = link_to 'Delete', admin_product_path(product), method: :delete, data: { confirm: "Are you sure? "}

@@ -2,23 +2,18 @@ class Admin::CategoriesController < Admin::BaseAdminController
   before_action :find_category , only: %i[show edit update destroy]
 
   def index
-    @categories = Category.order(:position)
+    @categories = Category.order(position: :asc)
   end
 
   def sort
-    respond_to :json
-    name = params[:param].first
-    parent_name = params[:param].second
-    position = params[:param].last
+    name = params[:param][:name]
+    parent_name = params[:param][:parent_name]
+    position = params[:param][:position]
 
-    category = Category.where(name: name).first
-    parent_category = Category.where(name: parent_name).first
-    if parent_category.present?
-      category.update(parent_id: parent_category.id, position: position)
-    else
-      category.update(parent_id: nil, position: position)
-    end
-    render nothing: true
+    category = Category.find_by(name: name)
+    parent_category = Category.find_by(name: parent_name)
+
+    category.update_categories(parent_category, position)
   end
 
   def show
@@ -36,7 +31,7 @@ class Admin::CategoriesController < Admin::BaseAdminController
 
     if @category.save
       flash[:notice] = 'Your category successfully created.'
-      redirect_to @category
+      redirect_to [:admin, @category]
     else
       render :new
     end
@@ -44,7 +39,7 @@ class Admin::CategoriesController < Admin::BaseAdminController
 
   def update
     if @category.update(category_params)
-      redirect_to @category
+      redirect_to [:admin, @category]
     else
       render :edit
     end

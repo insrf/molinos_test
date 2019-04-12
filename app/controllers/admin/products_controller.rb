@@ -23,7 +23,7 @@ class Admin::ProductsController < Admin::BaseAdminController
 
   def update
     if @product.update(product_params)
-      redirect_to @product.category
+      redirect_to [:admin, @product.category]
     else
       render :edit
     end
@@ -31,7 +31,7 @@ class Admin::ProductsController < Admin::BaseAdminController
 
   def destroy
     @product.destroy
-    redirect_to category_path(@product.category)
+    redirect_to admin_category_path(@product.category)
   end
 
   private

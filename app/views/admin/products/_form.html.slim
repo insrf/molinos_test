@@ -1,4 +1,4 @@
-= form_for [@category, @product], local: true do |form|
+= form_for [:admin, @category, @product], local: true do |form|
 
   = render 'layouts/errors', resource: @product
 

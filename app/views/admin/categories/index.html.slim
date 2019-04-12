@@ -1,6 +1,6 @@
 h1 All Categories
 
-= link_to "New category", admin_new_category_path(@category)
+= link_to "New category", new_admin_category_path(@category)
 
 #admin_tree
   = nested_categories @categories.arrange
